@@ -1,0 +1,9 @@
+Build/
+Library/
+Temp/
+LocalSettings/
+LocalSettings.meta
+*.csproj
+*.sln
+*.suo
+*.userprefs
