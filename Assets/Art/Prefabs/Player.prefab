@@ -90,7 +90,7 @@ Transform:
   m_GameObject: {fileID: 187598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .800000012, y: .800000012, z: .800000012}
   m_Children:
   - {fileID: 455750}
   - {fileID: 404418}
@@ -177,6 +177,11 @@ MonoBehaviour:
   baseEmission: 10
   fasterEmission: 60
   moveSpeed: 4
+  _game: {fileID: 0}
+  leftBound: 1
+  rightBound: 13
+  flickerTime: 2
+  flickerSpeed: 10
 --- !u!198 &19828786
 ParticleSystem:
   m_ObjectHideFlags: 1
