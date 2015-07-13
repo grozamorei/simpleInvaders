@@ -95,7 +95,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199406}
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   minimumInterval: 1
   shotInterval: 3
   burstPerShot: 1
+  burstDelay: .5
   bulletStartPosition: {fileID: 459228}
   bullet: {fileID: 11430480, guid: 8ff1881be9057664ea9ba5d19153ed32, type: 2}
   explosionPrefab: {fileID: 148544, guid: ed13aa2fe1ff4754ab941c5855aceb5e, type: 2}
@@ -209,6 +210,10 @@ Prefab:
       propertyPath: explosionPrefab
       value: 
       objectReference: {fileID: 148544, guid: ed13aa2fe1ff4754ab941c5855aceb5e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 199406}

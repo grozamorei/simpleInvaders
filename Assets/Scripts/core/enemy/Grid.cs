@@ -12,6 +12,9 @@ public class Grid : MonoBehaviour
     
     private Game _game;
     private List<List<Enemy>> _grid;
+    private float xOffset = 0;
+    private float currentWidth;
+    
     private int _phase = 0;
     private int _direction = 1;
     private float _currentTime = 0;
@@ -25,6 +28,7 @@ public class Grid : MonoBehaviour
         _game = FindObjectOfType<Game>();
         
         var w = gridWidth;
+        currentWidth = w;
         var h = enemiesPerLine.Length;
         _enemiesLeft = _enemiesTotal = w * h;
         _grid = new List<List<Enemy>>();
@@ -50,14 +54,14 @@ public class Grid : MonoBehaviour
             int w = _grid.Count;
             var p = transform.position;
             if (_direction == 1) {
-                if (transform.position.x + _grid.Count-1 >= _game.border.x + _game.border.width) {
+                if (transform.position.x + xOffset + currentWidth-1 >= _game.border.x + _game.border.width) {
                     transform.position = new Vector3(p.x, p.y - 0.5f, p.z);
                     _direction = -1;
                 } else {
                     transform.position = new Vector3(p.x + updateStep[_phase], p.y, p.z);
                 }
             } else {
-                if (transform.position.x <= _game.border.x) {
+                if (transform.position.x + xOffset <= _game.border.x) {
                     transform.position = new Vector3(p.x, p.y - 0.5f, p.z);
                     _direction = 1;
                 } else {
@@ -80,9 +84,28 @@ public class Grid : MonoBehaviour
         }
     }
     
+    public bool isEnemyAlive(int x, int y) {
+        return _grid[x][y] != null;
+    }
+    
     public void removeEnemy(int x, int y)
     {
         _grid[x][y] = null;
+        
+        for (int i = 0; i < _grid.Count; i++) {
+            if (_grid[i][0] != null) {
+                xOffset = i;
+                break;
+            }
+        }
+        
+        for (int i = 0; i < _grid.Count; i++) {
+            if (_grid[_grid.Count - 1 - i][0] != null) {
+                currentWidth = _grid.Count - xOffset - i;
+                break;
+            }
+        }
+        
         _enemiesLeft -= 1;
         var ratio = _enemiesLeft / _enemiesTotal;
         
@@ -103,6 +126,9 @@ public class Grid : MonoBehaviour
             if (ratio <= 0.2f)
                 _phase = 4;
             break;
+        }
+        if (_phase == 4 && _enemiesLeft == 1) {
+            _phase = 5;
         }
     }
 }

@@ -46,7 +46,9 @@ MonoBehaviour:
   - .119999997
   - .0599999987
   - .0299999993
+  - .0149999997
   updateStep:
+  - .25
   - .25
   - .25
   - .25
@@ -66,11 +68,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: updateStep.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: updateFrequency.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: gridWidth
@@ -130,6 +132,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: updateFrequency.Array.data[4]
       value: .0299999993
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: updateFrequency.Array.data[5]
+      value: .0149999997
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

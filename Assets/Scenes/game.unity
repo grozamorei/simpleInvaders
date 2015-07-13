@@ -331,7 +331,7 @@ Transform:
   - {fileID: 1937539580}
   - {fileID: 779737785}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &1086538507
 GameObject:
   m_ObjectHideFlags: 0

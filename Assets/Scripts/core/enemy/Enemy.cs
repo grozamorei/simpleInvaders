@@ -62,7 +62,13 @@ public class Enemy : MonoBehaviour {
     
     void OnCollisionEnter2D (Collision2D col)
     {
+        if (col.collider.GetComponent<Shield>() != null) {
+            transform.localPosition = new Vector3(_x, -_y, 0);
+            return;
+        }
         if (col.collider.GetComponent<Bullet>() == null) return;
+        if (_y < 2 && _grid.isEnemyAlive(_x, _y+1)) return;
+
         _grid.removeEnemy(_x, _y);
         var exp = Instantiate(explosionPrefab);
         exp.transform.position = explosionPoint.position;
