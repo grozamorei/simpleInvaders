@@ -38,11 +38,17 @@ public class Shield : MonoBehaviour
             midPoint.x += col.contacts[i].point.x;
             midPoint.y += col.contacts[i].point.y;
         }
-        midPoint.x /= collisionsNum; midPoint.x /= transform.lossyScale.x;
-        midPoint.y /= collisionsNum; midPoint.y /= transform.lossyScale.y;
+        midPoint.x /= collisionsNum; 
+        midPoint.x -= transform.position.x;
+        midPoint.x /= transform.lossyScale.x; 
+        
+        midPoint.y /= collisionsNum; 
+        midPoint.y -= transform.position.y;
+        midPoint.y /= transform.lossyScale.y; 
         _hitPoint.position = midPoint;
 
         var normalized = new Vector2(midPoint.x / (textureSize.x/100f), midPoint.y / (textureSize.y/100f));
+//        Debug.Log("normalized: " + normalized + "; position: " + transform.position);
 
         int explTx = 0;
         int explTy = 0;
