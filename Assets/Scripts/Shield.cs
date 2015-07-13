@@ -5,6 +5,7 @@ using util;
 public class Shield : MonoBehaviour
 {
     [SerializeField] private Texture2D _explosionMask;
+    [SerializeField] private ParticleSystem _ps;
 
     private Texture2D _texture;
 
@@ -39,16 +40,16 @@ public class Shield : MonoBehaviour
             midPoint.y += col.contacts[i].point.y;
         }
         midPoint.x /= collisionsNum; 
+        midPoint.y /= collisionsNum; 
+        
         midPoint.x -= transform.position.x;
         midPoint.x /= transform.lossyScale.x; 
         
-        midPoint.y /= collisionsNum; 
         midPoint.y -= transform.position.y;
         midPoint.y /= transform.lossyScale.y; 
-        _hitPoint.position = midPoint;
+        _hitPoint.localPosition = midPoint;
 
         var normalized = new Vector2(midPoint.x / (textureSize.x/100f), midPoint.y / (textureSize.y/100f));
-//        Debug.Log("normalized: " + normalized + "; position: " + transform.position);
 
         int explTx = 0;
         int explTy = 0;
@@ -80,7 +81,6 @@ public class Shield : MonoBehaviour
             explH = h;
         }
 
-//        Debug.Log (tx + "::" + ty + "::" + w + "::" + h);
         var txtColors = _texture.GetPixels(tx, ty, w, h);
         var explMask = _explosionMask.GetPixels(explTx, explTy, explW, explH);
 
@@ -92,6 +92,10 @@ public class Shield : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = Sprite.Create(_texture, _sprite.rect, _sprite.pivot);
         Destroy (GetComponent<PolygonCollider2D>());
         gameObject.AddComponent<PolygonCollider2D>();
+        
+        var ps = Instantiate(_ps);
+        ps.transform.position = new Vector3(_hitPoint.position.x, _hitPoint.position.y, -3);
+        ps.Play();
     }
 
     void OnDrawGizmos()
