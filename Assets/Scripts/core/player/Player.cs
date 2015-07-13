@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
+    [SerializeField] private Transform bulletStartPosition;
+    [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private ParticleSystem leftP;
     [SerializeField] private ParticleSystem rightP;
     [SerializeField] private ParticleSystem explosion;
@@ -17,11 +19,15 @@ public class Player : MonoBehaviour {
     [SerializeField] private int flickerTime = 2;
     [SerializeField] private int flickerSpeed = 1;
     
+    [SerializeField] private float fireCooldown = 0.5f;
+    
     private bool _leftDown = false;
     private bool _rightDown = false;
     
+    private float _currentFireCooldown = 0;
+    
     private bool _flicker = false;
-    private float _currentTime = 0;
+    private float _currentFlickerTime = 0;
     private int direction = -1;
     private Material _material;
     private PolygonCollider2D _collider;
@@ -53,6 +59,19 @@ public class Player : MonoBehaviour {
             _rightDown = false;
         }
         
+        
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            if (_currentFireCooldown <= 0) {
+//                Debug.Log("fire");
+                _currentFireCooldown = fireCooldown;
+                var b = Instantiate(bulletPrefab);
+                b.transform.position = bulletStartPosition.position;
+            } 
+        }
+        if (_currentFireCooldown >= 0) {
+            _currentFireCooldown -= Time.deltaTime;
+        }
+        
         float currentVel = 0;
         if (_rightDown) {
             currentVel += Time.deltaTime * moveSpeed * 1;
@@ -71,9 +90,9 @@ public class Player : MonoBehaviour {
         transform.position = new Vector3(pos.x + currentVel, pos.y, pos.z);
         
         if (_flicker) {
-            _currentTime += Time.deltaTime;
+            _currentFlickerTime += Time.deltaTime;
             
-            if (_currentTime >= flickerTime) {
+            if (_currentFlickerTime >= flickerTime) {
                 _flicker = false;
                 _collider.enabled = true;
                 return;
@@ -115,7 +134,7 @@ public class Player : MonoBehaviour {
             Destroy(gameObject);
         } else {
             _flicker = true;
-            _currentTime = 0;
+            _currentFlickerTime = 0;
             _collider.enabled = false;
         }
     }

@@ -19,6 +19,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &160280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 449258}
+  m_Layer: 8
+  m_Name: explosionStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &163612
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,6 +62,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 482290}
   m_RootOrder: 0
+--- !u!4 &449258
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160280}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 482290}
+  m_RootOrder: 1
 --- !u!4 &482290
 Transform:
   m_ObjectHideFlags: 1
@@ -58,6 +85,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 424872}
+  - {fileID: 449258}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5070878
@@ -105,6 +133,8 @@ MonoBehaviour:
   burstPerShot: 3
   bulletStartPosition: {fileID: 424872}
   bullet: {fileID: 11430480, guid: 8ff1881be9057664ea9ba5d19153ed32, type: 2}
+  explosionPrefab: {fileID: 148544, guid: 0c3e012e20e17c1439373e02348a0605, type: 2}
+  explosionPoint: {fileID: 449258}
 --- !u!114 &11490774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,6 +213,10 @@ Prefab:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosionPrefab
+      value: 
+      objectReference: {fileID: 148544, guid: 0c3e012e20e17c1439373e02348a0605, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 114686}

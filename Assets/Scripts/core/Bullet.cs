@@ -3,13 +3,14 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 0;
+    [SerializeField] private float speed = 0;
     
-    public float colorLerpSpeed = 10;
-    public Color color1 = new Color(0.8f, 0, 0, 0.8f);
-    public Color color2 = new Color(0, 0.8f, 0, 0.8f);
-    public Color color3 = new Color(0, 0, 0.8f, 0.8f);
-    public Color color4 = new Color(0, 0, 0.8f, 0.8f);
+    [SerializeField] private float colorLerpSpeed = 10;
+    [SerializeField] private Color color1 = new Color(0.8f, 0, 0, 0.8f);
+    [SerializeField] private Color color2 = new Color(0, 0.8f, 0, 0.8f);
+    [SerializeField] private Color color3 = new Color(0, 0, 0.8f, 0.8f);
+    [SerializeField] private Color color4 = new Color(0, 0, 0.8f, 0.8f);
+    
     private float _currentT = 0;
     private Color _currentC;
     private Color _nextC;

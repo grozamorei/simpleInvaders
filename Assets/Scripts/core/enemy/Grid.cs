@@ -29,7 +29,7 @@ public class Grid : MonoBehaviour
             _grid.Add(new List<Enemy>());
             for (int j = 0; j < h; j++) {
                 var e = Instantiate(enemiesPerLine[j]);
-                e.GetComponent<Enemy>().Init(this);
+                e.GetComponent<Enemy>().Init(this, i, j);
                 _grid[i].Add(e);
                 e.transform.SetParent(transform);
                 e.transform.localPosition = new Vector3(i, -j, 0);
@@ -74,5 +74,10 @@ public class Grid : MonoBehaviour
         if (_currentShots == instantShots) {
             _currentShots = 0;
         }
+    }
+    
+    public void removeEnemy(int x, int y)
+    {
+        _grid[x][y] = null;
     }
 }

@@ -90,8 +90,18 @@ public class Shield : MonoBehaviour
         _texture.SetPixels(tx, ty, w, h, txtColors);
         _texture.Apply();
         GetComponent<SpriteRenderer>().sprite = Sprite.Create(_texture, _sprite.rect, _sprite.pivot);
+
         Destroy (GetComponent<PolygonCollider2D>());
-        gameObject.AddComponent<PolygonCollider2D>();
+        float alphas = 0;
+        var pxls = _texture.GetPixels();
+        for (int i = 0; i < pxls.Length; i++) {
+            if (pxls[i].a > 0.1f)
+                alphas += 1;
+        }
+        float alphaRatio = alphas / pxls.Length;
+        if (alphaRatio > 0.02f) {
+            gameObject.AddComponent<PolygonCollider2D>();
+        }
         
         var ps = Instantiate(_ps);
         ps.transform.position = new Vector3(_hitPoint.position.x, _hitPoint.position.y, -3);
