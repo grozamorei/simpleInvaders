@@ -65,7 +65,7 @@ public class Grid : MonoBehaviour
         for (int i = 0; i < _grid.Count; i++) {
             for (int j = enemiesPerLine.Length-1; j >= 0; j--) {
                 if (_grid[i][j] == null) continue;
-                if (_grid[i][j].internalUpdate(_currentShots == 2)) {
+                if (_grid[i][j].internalUpdate(_currentShots == instantShots)) {
                     _currentShots += 1;
                 }
                 break;
