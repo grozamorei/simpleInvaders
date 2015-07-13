@@ -131,6 +131,7 @@ MonoBehaviour:
   minimumInterval: 2
   shotInterval: 1
   burstPerShot: 3
+  burstDelay: .180000007
   bulletStartPosition: {fileID: 424872}
   bullet: {fileID: 11430480, guid: 8ff1881be9057664ea9ba5d19153ed32, type: 2}
   explosionPrefab: {fileID: 148544, guid: 0c3e012e20e17c1439373e02348a0605, type: 2}
@@ -217,6 +218,10 @@ Prefab:
       propertyPath: explosionPrefab
       value: 
       objectReference: {fileID: 148544, guid: 0c3e012e20e17c1439373e02348a0605, type: 2}
+    - target: {fileID: 0}
+      propertyPath: burstDelay
+      value: .180000007
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 114686}

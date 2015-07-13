@@ -44,12 +44,14 @@ MonoBehaviour:
   - .5
   - .25
   - .119999997
-  - .0500000007
+  - .0599999987
+  - .0299999993
   updateStep:
   - .25
-  - .200000003
-  - .100000001
-  - .0500000007
+  - .25
+  - .25
+  - .25
+  - .25
   enemiesPerLine:
   - {fileID: 11448364, guid: 75c07b4d7267c9e4aa6cd95c8644cad9, type: 2}
   - {fileID: 11491032, guid: 5d488873b07317c4dac7bf5a31e078e2, type: 2}
@@ -62,6 +64,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: updateStep.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: updateFrequency.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: gridWidth
       value: 8
@@ -85,7 +95,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: updateFrequency.Array.data[3]
-      value: .0500000007
+      value: .0599999987
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: instantShots
@@ -101,6 +111,26 @@ Prefab:
       value: 
       objectReference: {fileID: 11491032, guid: 00b58985e659a7f46ae00a7fcaea1551,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: updateStep.Array.data[2]
+      value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: updateStep.Array.data[3]
+      value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: updateStep.Array.data[1]
+      value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: updateStep.Array.data[4]
+      value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: updateFrequency.Array.data[4]
+      value: .0299999993
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 110830}

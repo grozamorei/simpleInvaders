@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class Grid : MonoBehaviour 
 {
     public int gridWidth = 6;
-    public float[] updateFrequency = new float[] {0.8f, 0.4f, 0.2f, 0.1f};
-    public float[] updateStep = new float[] {0.25f, 0.2f, 0.2f, 0.1f};
+    public float[] updateFrequency = new float[] {0.8f, 0.4f, 0.2f, 0.1f, 0.1f};
+    public float[] updateStep = new float[] {0.25f, 0.2f, 0.2f, 0.1f, 0.1f};
     public Enemy[] enemiesPerLine;
     public int instantShots = 2;
     
@@ -17,12 +17,16 @@ public class Grid : MonoBehaviour
     private float _currentTime = 0;
     private int _currentShots = 0;
     
+    private float _enemiesLeft;
+    private float _enemiesTotal;
+    
     public void Awake()
     {
         _game = FindObjectOfType<Game>();
         
         var w = gridWidth;
         var h = enemiesPerLine.Length;
+        _enemiesLeft = _enemiesTotal = w * h;
         _grid = new List<List<Enemy>>();
         
         for (int i = 0; i < w; i++) {
@@ -79,5 +83,26 @@ public class Grid : MonoBehaviour
     public void removeEnemy(int x, int y)
     {
         _grid[x][y] = null;
+        _enemiesLeft -= 1;
+        var ratio = _enemiesLeft / _enemiesTotal;
+        
+        switch(_phase) {
+            case 0:
+                if (ratio <= 0.8f)
+                    _phase = 1;
+            break;
+            case 1:
+                if (ratio <= 0.6f)
+                    _phase = 2;
+            break;
+            case 2:
+                if (ratio <= 0.4f)
+                    _phase = 3;
+            break;
+            case 3:
+            if (ratio <= 0.2f)
+                _phase = 4;
+            break;
+        }
     }
 }
