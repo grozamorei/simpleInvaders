@@ -28,18 +28,19 @@ public class Game : MonoBehaviour
         for (int i = 0; i < _lifeIndicators.Length; i++) {
             if (_lifeIndicators[i] != null) {
                 Destroy(_lifeIndicators[i].gameObject);
+                _lifeIndicators[i] = null;
                 break;
             }
         }
         
-        if (currentLifes == -1) {
+        if (currentLifes == 0) {
             end();
         }
     }
     
     public void end()
     {
-    
+        Debug.LogWarning("END GAME");
     }
 
     void OnDrawGizmos()

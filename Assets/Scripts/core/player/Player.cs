@@ -116,6 +116,13 @@ public class Player : MonoBehaviour {
     
     void OnCollisionEnter2D (Collision2D col)
     {
+        if (col.collider.GetComponent<Enemy>() != null) {
+            while(_game.currentLifes >= 0) {
+                Debug.Log(_game.currentLifes);
+                _game.subtractLife();
+            }
+            Destroy(gameObject);
+        }
         Vector2 midPoint = new Vector2();
         int collisionsNum = col.contacts.Length;
         for (int i = 0; i < collisionsNum; i++) {

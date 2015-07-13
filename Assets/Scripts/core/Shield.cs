@@ -99,7 +99,7 @@ public class Shield : MonoBehaviour
                 alphas += 1;
         }
         float alphaRatio = alphas / pxls.Length;
-        if (alphaRatio > 0.02f) {
+        if (alphaRatio > 0.05f) {
             gameObject.AddComponent<PolygonCollider2D>();
         }
         
