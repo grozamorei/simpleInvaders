@@ -8,12 +8,14 @@ public class Grid : MonoBehaviour
     public float[] updateFrequency = new float[] {0.8f, 0.4f, 0.2f, 0.1f};
     public float[] updateStep = new float[] {0.25f, 0.2f, 0.2f, 0.1f};
     public Enemy[] enemiesPerLine;
+    public int instantShots = 2;
     
     private Game _game;
     private List<List<Enemy>> _grid;
     private int _phase = 0;
     private int _direction = 1;
     private float _currentTime = 0;
+    private int _currentShots = 0;
     
     public void Awake()
     {
@@ -30,7 +32,7 @@ public class Grid : MonoBehaviour
                 e.GetComponent<Enemy>().Init(this);
                 _grid[i].Add(e);
                 e.transform.SetParent(transform);
-                e.transform.localPosition = new Vector3(i, j - (h-1), 0);
+                e.transform.localPosition = new Vector3(i, -j, 0);
             }
         }
     }
@@ -63,9 +65,14 @@ public class Grid : MonoBehaviour
         for (int i = 0; i < _grid.Count; i++) {
             for (int j = enemiesPerLine.Length-1; j >= 0; j--) {
                 if (_grid[i][j] == null) continue;
-                _grid[i][j].internalUpdate();
+                if (_grid[i][j].internalUpdate(_currentShots == 2)) {
+                    _currentShots += 1;
+                }
                 break;
             }
+        }
+        if (_currentShots == instantShots) {
+            _currentShots = 0;
         }
     }
 }

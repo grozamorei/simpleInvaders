@@ -51,9 +51,10 @@ MonoBehaviour:
   - .100000001
   - .0500000007
   enemiesPerLine:
-  - {fileID: 11491032, guid: 00b58985e659a7f46ae00a7fcaea1551, type: 2}
-  - {fileID: 11491032, guid: 5d488873b07317c4dac7bf5a31e078e2, type: 2}
   - {fileID: 11448364, guid: 75c07b4d7267c9e4aa6cd95c8644cad9, type: 2}
+  - {fileID: 11491032, guid: 5d488873b07317c4dac7bf5a31e078e2, type: 2}
+  - {fileID: 11491032, guid: 00b58985e659a7f46ae00a7fcaea1551, type: 2}
+  instantShots: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -86,6 +87,20 @@ Prefab:
       propertyPath: updateFrequency.Array.data[3]
       value: .00999999978
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: instantShots
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: enemiesPerLine.Array.data[0]
+      value: 
+      objectReference: {fileID: 11448364, guid: 75c07b4d7267c9e4aa6cd95c8644cad9,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: enemiesPerLine.Array.data[2]
+      value: 
+      objectReference: {fileID: 11491032, guid: 00b58985e659a7f46ae00a7fcaea1551,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 110830}

@@ -100,7 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0758b7d33d32f1d4598f3b931952bec0, type: 3}
   m_Name: enemyT2
   m_EditorClassIdentifier: 
-  shotInterval: 2
+  minimumInterval: 2
+  shotInterval: 1
   burstPerShot: 3
   bulletStartPosition: {fileID: 424872}
   bullet: {fileID: 11430480, guid: 8ff1881be9057664ea9ba5d19153ed32, type: 2}
@@ -160,7 +161,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: shotInterval
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: burstPerShot
