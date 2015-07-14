@@ -71,7 +71,7 @@ public class Player : MonoBehaviour {
         
         if (Input.GetKeyDown(KeyCode.Space)) {
             if (_currentFireCooldown <= 0) {
-//                Debug.Log("fire");
+                _game.audio.playShoot();
                 _currentFireCooldown = fireCooldown;
                 var b = Instantiate(bulletPrefab);
                 b.transform.position = bulletStartPosition.position;
@@ -140,7 +140,9 @@ public class Player : MonoBehaviour {
                 Debug.Log(_game.currentLifes);
                 _game.subtractLife();
             }
+            _game.audio.playFinalExplosion();
             Destroy(gameObject);
+            return;
         }
         Vector2 midPoint = new Vector2();
         int collisionsNum = col.contacts.Length;
@@ -157,12 +159,16 @@ public class Player : MonoBehaviour {
         
         _game.subtractLife();
         if (_game.currentLifes == 0) {
+            _game.audio.playFinalExplosion();
             Destroy(gameObject);
+            return;
         } else {
             _flicker = true;
             _currentFlickerTime = 0;
             _collider.enabled = false;
         }
+        
+        _game.audio.playExplosion();
     }
     
     void OnDrawGizmos()

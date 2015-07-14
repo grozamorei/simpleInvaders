@@ -5,6 +5,7 @@ using System.Collections;
 public class Game : MonoBehaviour 
 {
     public Rect border = new Rect(1, 3, 10, 5);
+    public Audio audio;
     [SerializeField] private GameObject grid;
     [SerializeField] private Transform[] _lifeIndicators;
     [SerializeField] private Text _scoreLabel;

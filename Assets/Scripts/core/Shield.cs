@@ -20,9 +20,12 @@ public class Shield : MonoBehaviour
     private IntVec2 maskSize;
     
     private CameraShake _shake;
+    
+    private Game _game;
 
     void Awake()
     {
+        _game = FindObjectOfType<Game>();
         _shake = Camera.main.GetComponent<CameraShake>();
         
         _material = GetComponent<SpriteRenderer>().sharedMaterial;
@@ -120,6 +123,8 @@ public class Shield : MonoBehaviour
         var ps = Instantiate(_ps);
         ps.transform.position = new Vector3(_hitPoint.position.x, _hitPoint.position.y, -3);
         ps.Play();
+        
+        _game.audio.playExplosion();
     }
 
     void OnDrawGizmos()

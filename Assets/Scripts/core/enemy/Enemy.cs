@@ -62,6 +62,7 @@ public class Enemy : MonoBehaviour {
         if (_currentBurstCount == 0) return;
         
         if (_currentBurstTime <= 0) {
+            _game.audio.playShoot();
             var b = Instantiate(bullet);
             b.transform.position = bulletStartPosition.position;
             _currentBurstTime = burstDelay;
@@ -88,6 +89,7 @@ public class Enemy : MonoBehaviour {
         if (col.collider.GetComponent<Bullet>() == null) return;
         if (_y < 2 && _grid.isEnemyAlive(_x, _y+1)) return;
         
+        _game.audio.playExplosion();
         _game.addScore(score);
 
         _grid.removeEnemy(_x, _y);

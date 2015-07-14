@@ -3,15 +3,48 @@ using System.Collections;
 
 public class Audio : MonoBehaviour {
 
+    [SerializeField] private AudioClip finalExplosion;
+    [SerializeField] private AudioClip[] explosions;
+    [SerializeField] private AudioClip[] shots;
     
-
-    public void explode()
+    private AudioSource[] sources;
+    
+    void Awake()
     {
-    
+        sources = GetComponents<AudioSource>();
     }
     
-    public void shoot()
+    void Update()
     {
+    }
+
+    public void playExplosion()
+    {
+        int max = explosions.Length-1;
+        var clip = explosions[Random.Range(0, max)];
+        _playOnFreeSource(clip);
+    }
     
+    public void playFinalExplosion()
+    {
+        _playOnFreeSource(finalExplosion);
+    }
+    
+    public void playShoot()
+    {
+        int max = shots.Length-1;
+        var clip = shots[Random.Range(0, max)];
+        _playOnFreeSource(clip);
+    }
+    
+    private void _playOnFreeSource(AudioClip clip)
+    {
+        foreach(var s in sources) {
+            if (!s.isPlaying) {
+                s.clip = clip;
+                s.Play();
+                return;
+            }
+        }
     }
 }
