@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour {
     [SerializeField] private GameObject explosionPrefab = null;
     [SerializeField] private Transform explosionPoint = null;
     
+    [SerializeField] private float _shakeAmount = 0.1f;
+    [SerializeField] private float _shakeTime = 0.2f;
+    
     private Grid _grid;
     private float _currentTime = 0;
     private float _nextShotTime;
@@ -20,8 +23,12 @@ public class Enemy : MonoBehaviour {
     private int _currentBurstCount;
     private float _currentBurstTime = -1f;
     
+    private CameraShake _shake;
+    
     public void Init(Grid grid, int x, int y)
     {
+        _shake = Camera.main.GetComponent<CameraShake>();
+        
         _x = x; _y = y;
         _grid = grid;
         _nextShotTime = Random.Range(minimumInterval, minimumInterval + shotInterval);
@@ -62,6 +69,14 @@ public class Enemy : MonoBehaviour {
     
     void OnCollisionEnter2D (Collision2D col)
     {
+        if (_shake.shakeAmount > 0) {
+            _shake.shakeAmount += _shakeAmount / 2;
+            _shake.shake += _shakeTime/2;
+        } else {
+            _shake.shakeAmount += _shakeAmount;
+            _shake.shake += _shakeTime;
+        }
+        
         if (col.collider.GetComponent<Shield>() != null) {
             transform.localPosition = new Vector3(_x, -_y, 0);
             return;

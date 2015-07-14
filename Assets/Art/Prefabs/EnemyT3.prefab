@@ -136,6 +136,8 @@ MonoBehaviour:
   bullet: {fileID: 11430480, guid: 8ff1881be9057664ea9ba5d19153ed32, type: 2}
   explosionPrefab: {fileID: 148544, guid: 0c3e012e20e17c1439373e02348a0605, type: 2}
   explosionPoint: {fileID: 449258}
+  _shakeAmount: .0299999993
+  _shakeTime: .100000001
 --- !u!114 &11490774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,6 +231,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Interpolate
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _shakeAmount
+      value: .0299999993
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _shakeTime
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

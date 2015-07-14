@@ -6,6 +6,8 @@ public class Shield : MonoBehaviour
 {
     [SerializeField] private Texture2D _explosionMask;
     [SerializeField] private ParticleSystem _ps;
+    [SerializeField] private float _shakeAmount = 0.2f;
+    [SerializeField] private float _shakeTime = 1f;
 
     private Texture2D _texture;
 
@@ -16,9 +18,13 @@ public class Shield : MonoBehaviour
 
     private IntVec2 textureSize;
     private IntVec2 maskSize;
+    
+    private CameraShake _shake;
 
     void Awake()
     {
+        _shake = Camera.main.GetComponent<CameraShake>();
+        
         _material = GetComponent<SpriteRenderer>().sharedMaterial;
         _sprite = GetComponent<SpriteRenderer>().sprite;
         _texture = Instantiate(_sprite.texture) as Texture2D;
@@ -33,6 +39,14 @@ public class Shield : MonoBehaviour
 
     void OnCollisionEnter2D (Collision2D col)
     {
+        if (_shake.shakeAmount > 0) {
+            _shake.shakeAmount += _shakeAmount / 2;
+            _shake.shake += _shakeTime/2;
+        } else {
+            _shake.shakeAmount += _shakeAmount;
+            _shake.shake += _shakeTime;
+        }
+
         Vector2 midPoint = new Vector2();
         int collisionsNum = col.contacts.Length;
         for (int i = 0; i < collisionsNum; i++) {

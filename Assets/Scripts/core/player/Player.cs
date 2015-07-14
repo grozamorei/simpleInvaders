@@ -21,23 +21,32 @@ public class Player : MonoBehaviour {
     
     [SerializeField] private float fireCooldown = 0.5f;
     
+    [SerializeField] private float _shakeAmount = 0.1f;
+    [SerializeField] private float _shakeTime = 0.2f;
+    
     private bool _leftDown = false;
     private bool _rightDown = false;
     
     private float _currentFireCooldown = 0;
     
+    private float _defaultAlpha;
     private bool _flicker = false;
     private float _currentFlickerTime = 0;
     private int direction = -1;
     private Material _material;
     private PolygonCollider2D _collider;
     
+    private CameraShake _shake;
+    
     void Awake()
     {
+        _shake = Camera.main.GetComponent<CameraShake>();
+
         leftP.emissionRate = baseEmission;
         rightP.emissionRate = baseEmission;
         
         _material = GetComponent<SpriteRenderer>().material;
+        _defaultAlpha = _material.GetColor("_Color").a;
         _collider = GetComponent<PolygonCollider2D>();
     }
     
@@ -91,14 +100,16 @@ public class Player : MonoBehaviour {
         
         if (_flicker) {
             _currentFlickerTime += Time.deltaTime;
-            
+
+            var c = _material.GetColor("_Color");
             if (_currentFlickerTime >= flickerTime) {
                 _flicker = false;
                 _collider.enabled = true;
+                c.a = _defaultAlpha;
+                _material.SetColor("_Color", c);
                 return;
             }
             
-            var c = _material.GetColor("_Color");
             if (direction == -1) {
                 c.a -= Time.deltaTime * flickerSpeed;
                 if (c.a <= 0.2) {
@@ -116,6 +127,14 @@ public class Player : MonoBehaviour {
     
     void OnCollisionEnter2D (Collision2D col)
     {
+        if (_shake.shakeAmount > 0) {
+            _shake.shakeAmount += _shakeAmount / 2;
+            _shake.shake += _shakeTime/2;
+        } else {
+            _shake.shakeAmount += _shakeAmount;
+            _shake.shake += _shakeTime;
+        }
+        
         if (col.collider.GetComponent<Enemy>() != null) {
             while(_game.currentLifes >= 0) {
                 Debug.Log(_game.currentLifes);
