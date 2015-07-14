@@ -89,12 +89,21 @@ public class Enemy : MonoBehaviour {
         if (col.collider.GetComponent<Bullet>() == null) return;
         if (_y < 2 && _grid.isEnemyAlive(_x, _y+1)) return;
         
-        _game.audio.playExplosion();
         _game.addScore(score);
-
+        explode();
+    }
+    
+    void explode()
+    {
+        _game.audio.playExplosion();
         _grid.removeEnemy(_x, _y);
         var exp = Instantiate(explosionPrefab);
         exp.transform.position = explosionPoint.position;
         Destroy(gameObject);
+    }
+    
+    public void end()
+    {
+        explode();
     }
 }

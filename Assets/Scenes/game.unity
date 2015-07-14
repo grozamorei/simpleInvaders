@@ -274,9 +274,19 @@ Prefab:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 199790, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &376934736 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11470614, guid: b090aa68f1327394a98eee1c16a7525b,
+    type: 2}
+  m_PrefabInternal: {fileID: 376934735}
+  m_Script: {fileID: 11500000, guid: a20225ba2a945914aaa1ba6e569a60b1, type: 3}
 --- !u!1001 &779737784
 Prefab:
   m_ObjectHideFlags: 0
@@ -358,6 +368,12 @@ Transform:
   - {fileID: 779737785}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &1023939311 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11419422, guid: b090aa68f1327394a98eee1c16a7525b,
+    type: 2}
+  m_PrefabInternal: {fileID: 376934735}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1292528438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,6 +1065,8 @@ MonoBehaviour:
   - {fileID: 2147205133}
   - {fileID: 1637422229}
   _scoreLabel: {fileID: 1361627782}
+  _startLabel: {fileID: 1023939311}
+  _endScreen: {fileID: 376934736}
 --- !u!4 &1638279814
 Transform:
   m_ObjectHideFlags: 0

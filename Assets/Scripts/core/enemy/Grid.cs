@@ -131,4 +131,16 @@ public class Grid : MonoBehaviour
             _phase = 5;
         }
     }
+    
+    public void end()
+    {
+        var w = gridWidth;
+        var h = enemiesPerLine.Length;
+        for(int i = 0; i < w; i++) {
+            for(int j = 0; j < h; j++) {
+                if (_grid[i][j] == null) continue;
+                _grid[i][j].end();
+            }
+        }
+    }
 }

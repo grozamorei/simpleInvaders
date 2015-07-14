@@ -52,6 +52,8 @@ public class Player : MonoBehaviour {
     
     void Update()
     {
+        if (!_game.started) return;
+
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
             rightP.emissionRate = fasterEmission;
             _leftDown = true;

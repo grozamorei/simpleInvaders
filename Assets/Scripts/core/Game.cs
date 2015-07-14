@@ -9,20 +9,45 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject grid;
     [SerializeField] private Transform[] _lifeIndicators;
     [SerializeField] private Text _scoreLabel;
+    [SerializeField] private Text _startLabel;
+    [SerializeField] private EndScreenMediator _endScreen;
     
     private Grid _grid;
     public int currentLifes { get; private set; }
+    
+    public bool started { get; private set; }
+    private float _currentTime = 0;
+    private int _flickerTime = 0;
     
     private int _score = 0;
     
     void Awake()
     {
-        currentLifes = _lifeIndicators.Length;
-        var g = Instantiate(grid);
-        g.transform.SetParent(transform, false);
-        g.transform.position = new Vector3(border.x, border.y + border.height, 0);
-        _grid = g.GetComponent<Grid>();
+        started = false;
     }
+    
+    void Update()
+    {
+        if (started) return;
+
+        if (_currentTime >= 0.5f) {
+            _startLabel.enabled = !_startLabel.enabled;
+            _currentTime = 0;
+            _flickerTime += 1;
+            if (_flickerTime > 6) {
+                started = true;
+                _startLabel.enabled = false;
+                
+                currentLifes = _lifeIndicators.Length;
+                var g = Instantiate(grid);
+                g.transform.SetParent(transform, false);
+                g.transform.position = new Vector3(border.x, border.y + border.height, 0);
+                _grid = g.GetComponent<Grid>();
+            }
+        }
+        _currentTime += Time.deltaTime;
+    }
+    
     
     public void subtractLife()
     {
@@ -44,7 +69,8 @@ public class Game : MonoBehaviour
     
     public void end()
     {
-        Debug.LogWarning("END GAME");
+        _grid.end();
+        StartCoroutine(showEndScreen());
     }
     
     public void addScore(int score) 
@@ -60,6 +86,12 @@ public class Game : MonoBehaviour
         } else {
             _scoreLabel.text = _score.ToString();
         }
+    }
+    
+    IEnumerator showEndScreen()
+    {
+        yield return new WaitForSeconds(2);
+        _endScreen.init(currentLifes > 0, _scoreLabel.text);
     }
     
     void OnDrawGizmos()
