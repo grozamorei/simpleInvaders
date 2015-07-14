@@ -23,7 +23,8 @@ public class Game : MonoBehaviour
     
     void Awake()
     {
-        started = false;
+//        started = false;
+        end ();
     }
     
     void Update()
@@ -69,7 +70,7 @@ public class Game : MonoBehaviour
     
     public void end()
     {
-        _grid.end();
+//        _grid.end();
         StartCoroutine(showEndScreen());
     }
     
