@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour {
     [SerializeField] private float _shakeAmount = 0.1f;
     [SerializeField] private float _shakeTime = 0.2f;
     
+    [SerializeField] private int score;
+
+    private Game _game;   
     private Grid _grid;
     private float _currentTime = 0;
     private float _nextShotTime;
@@ -25,8 +28,9 @@ public class Enemy : MonoBehaviour {
     
     private CameraShake _shake;
     
-    public void Init(Grid grid, int x, int y)
+    public void Init(Game game, Grid grid, int x, int y)
     {
+        _game = game;
         _shake = Camera.main.GetComponent<CameraShake>();
         
         _x = x; _y = y;
@@ -83,6 +87,8 @@ public class Enemy : MonoBehaviour {
         }
         if (col.collider.GetComponent<Bullet>() == null) return;
         if (_y < 2 && _grid.isEnemyAlive(_x, _y+1)) return;
+        
+        _game.addScore(score);
 
         _grid.removeEnemy(_x, _y);
         var exp = Instantiate(explosionPrefab);

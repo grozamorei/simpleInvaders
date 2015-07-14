@@ -138,6 +138,7 @@ MonoBehaviour:
   explosionPoint: {fileID: 449258}
   _shakeAmount: .0299999993
   _shakeTime: .100000001
+  score: 100
 --- !u!114 &11490774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,6 +240,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: _shakeTime
       value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: score
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

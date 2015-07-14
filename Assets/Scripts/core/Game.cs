@@ -1,13 +1,18 @@
-﻿using UnityEngine;
+﻿using UnityEngine.UI;
+using UnityEngine;
 using System.Collections;
 
 public class Game : MonoBehaviour 
 {
     public Rect border = new Rect(1, 3, 10, 5);
-    public GameObject grid;
+    [SerializeField] private GameObject grid;
     [SerializeField] private Transform[] _lifeIndicators;
+    [SerializeField] private Text _scoreLabel;
+    
     private Grid _grid;
     public int currentLifes { get; private set; }
+    
+    private int _score = 0;
     
     void Awake()
     {
@@ -18,12 +23,10 @@ public class Game : MonoBehaviour
         _grid = g.GetComponent<Grid>();
     }
     
-    void Update()
-    {
-    }
-    
     public void subtractLife()
     {
+        addScore(-120);
+
         currentLifes -= 1;
         for (int i = 0; i < _lifeIndicators.Length; i++) {
             if (_lifeIndicators[i] != null) {
@@ -42,7 +45,22 @@ public class Game : MonoBehaviour
     {
         Debug.LogWarning("END GAME");
     }
-
+    
+    public void addScore(int score) 
+    {
+        _score = Mathf.Max(0, _score + score);
+        
+        if (_score == 0) {
+            _scoreLabel.text = "0000";
+        } else if (_score < 100) {
+            _scoreLabel.text = "00" + _score.ToString();
+        } else if (_score < 1000) {
+            _scoreLabel.text = "0" + _score.ToString();
+        } else {
+            _scoreLabel.text = _score.ToString();
+        }
+    }
+    
     void OnDrawGizmos()
     {
         Gizmos.color = Color.green;

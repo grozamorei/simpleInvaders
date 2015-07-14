@@ -459,6 +459,12 @@ MonoBehaviour:
   shake: 0
   shakeAmount: .699999988
   decreaseFactor: 1
+--- !u!114 &1361627782 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11411792, guid: b090aa68f1327394a98eee1c16a7525b,
+    type: 2}
+  m_PrefabInternal: {fileID: 376934735}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!224 &1637422229 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22444106, guid: b090aa68f1327394a98eee1c16a7525b,
@@ -496,12 +502,13 @@ MonoBehaviour:
     x: 1
     y: 4
     width: 14
-    height: 6.5
+    height: 6
   grid: {fileID: 110830, guid: 5d7afd551a6ebe24bbb5a7e339354970, type: 2}
   _lifeIndicators:
   - {fileID: 1925656797}
   - {fileID: 2147205133}
   - {fileID: 1637422229}
+  _scoreLabel: {fileID: 1361627782}
 --- !u!4 &1638279814
 Transform:
   m_ObjectHideFlags: 0

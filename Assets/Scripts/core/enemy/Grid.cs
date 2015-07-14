@@ -37,7 +37,7 @@ public class Grid : MonoBehaviour
             _grid.Add(new List<Enemy>());
             for (int j = 0; j < h; j++) {
                 var e = Instantiate(enemiesPerLine[j]);
-                e.GetComponent<Enemy>().Init(this, i, j);
+                e.GetComponent<Enemy>().Init(_game, this, i, j);
                 _grid[i].Add(e);
                 e.transform.SetParent(transform);
                 e.transform.localPosition = new Vector3(i, -j, 0);
