@@ -50,7 +50,7 @@ namespace social
             if (win) {
                 _statusMessage.text = "YOU  WIN!!";
             } else {
-                _statusMessage.text = "You  loose";
+                _statusMessage.text = "You  lose";
             }
             _scoreMessage.text = strScore;
             
