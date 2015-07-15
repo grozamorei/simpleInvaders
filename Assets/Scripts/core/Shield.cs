@@ -1,17 +1,16 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 using util;
 
 public class Shield : MonoBehaviour
 {
-    [SerializeField] private Texture2D _explosionMask;
-    [SerializeField] private ParticleSystem _ps;
+    [SerializeField] private Texture2D _explosionMask = null;
+    [SerializeField] private ParticleSystem _ps = null;
     [SerializeField] private float _shakeAmount = 0.2f;
     [SerializeField] private float _shakeTime = 1f;
 
     private Texture2D _texture;
 
-    private Material _material;
     private Sprite _sprite;
 
     private Transform _hitPoint;
@@ -28,7 +27,6 @@ public class Shield : MonoBehaviour
         _game = FindObjectOfType<Game>();
         _shake = Camera.main.GetComponent<CameraShake>();
         
-        _material = GetComponent<SpriteRenderer>().sharedMaterial;
         _sprite = GetComponent<SpriteRenderer>().sprite;
         _texture = Instantiate(_sprite.texture) as Texture2D;
 
@@ -124,7 +122,7 @@ public class Shield : MonoBehaviour
         ps.transform.position = new Vector3(_hitPoint.position.x, _hitPoint.position.y, -3);
         ps.Play();
         
-        _game.audio.playExplosion();
+        _game.soundSystem.playExplosion();
     }
 
     void OnDrawGizmos()

@@ -1,18 +1,18 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Player : MonoBehaviour {
 
-    [SerializeField] private Transform bulletStartPosition;
-    [SerializeField] private Bullet bulletPrefab;
-    [SerializeField] private ParticleSystem leftP;
-    [SerializeField] private ParticleSystem rightP;
-    [SerializeField] private ParticleSystem explosion;
+    [SerializeField] private Transform bulletStartPosition = null;
+    [SerializeField] private Bullet bulletPrefab = null;
+    [SerializeField] private ParticleSystem leftP = null;
+    [SerializeField] private ParticleSystem rightP = null;
+    [SerializeField] private ParticleSystem explosion = null;
     [SerializeField] private float baseEmission = 10;
     [SerializeField] private float fasterEmission = 100;
     
     [SerializeField] private float moveSpeed = 5;
-    [SerializeField] private Game _game;
+    [SerializeField] private Game _game = null;
     [SerializeField] private int leftBound = 1;
     [SerializeField] private int rightBound = 10;
     
@@ -73,7 +73,7 @@ public class Player : MonoBehaviour {
         
         if (Input.GetKeyDown(KeyCode.Space)) {
             if (_currentFireCooldown <= 0) {
-                _game.audio.playShoot();
+                _game.soundSystem.playShoot();
                 _currentFireCooldown = fireCooldown;
                 var b = Instantiate(bulletPrefab);
                 b.transform.position = bulletStartPosition.position;
@@ -142,7 +142,7 @@ public class Player : MonoBehaviour {
                 Debug.Log(_game.currentLifes);
                 _game.subtractLife();
             }
-            _game.audio.playFinalExplosion();
+            _game.soundSystem.playFinalExplosion();
             Destroy(gameObject);
             return;
         }
@@ -161,7 +161,7 @@ public class Player : MonoBehaviour {
         
         _game.subtractLife();
         if (_game.currentLifes == 0) {
-            _game.audio.playFinalExplosion();
+            _game.soundSystem.playFinalExplosion();
             Destroy(gameObject);
             return;
         } else {
@@ -170,7 +170,7 @@ public class Player : MonoBehaviour {
             _collider.enabled = false;
         }
         
-        _game.audio.playExplosion();
+        _game.soundSystem.playExplosion();
     }
     
     void OnDrawGizmos()

@@ -28,7 +28,6 @@ namespace social
         private bool _loading = false;
         private int _currentScore;
         private string _currentName = null;
-        private ScoreResultCollection _currentResults;
 
         void Awake()
         {
@@ -96,21 +95,20 @@ namespace social
             yield return w;
 
             var answer = JsonMapper.ToObject<ScoreResultCollection>(w.text);
-            _currentResults = answer;
             
             for (int i = 0; i < answer.results.Count; i++) {
                 var name = answer.results[i].name;
-                _highScoreData[i].name.text = name;
+                _highScoreData[i].nameText.text = name;
                 
                 var score = answer.results[i].score;
-                _highScoreData[i].score.text = Score.formatToStr(score);
+                _highScoreData[i].scoreText.text = Score.formatToStr(score);
 
                 if (name == _currentName && score == _currentScore) {
-                    _highScoreData[i].name.color = new Color(0.8f, 0.8f, 0, 1f);
-                    _highScoreData[i].score.color = new Color(0.8f, 0.8f, 0, 1f);
+                    _highScoreData[i].nameText.color = new Color(0.8f, 0.8f, 0, 1f);
+                    _highScoreData[i].scoreText.color = new Color(0.8f, 0.8f, 0, 1f);
                 } else {
-                    _highScoreData[i].name.color = new Color(0.19f, 0.19f, 0.19f, 1f);
-                    _highScoreData[i].score.color = new Color(0.19f, 0.19f, 0.19f, 1f);
+                    _highScoreData[i].nameText.color = new Color(0.19f, 0.19f, 0.19f, 1f);
+                    _highScoreData[i].scoreText.color = new Color(0.19f, 0.19f, 0.19f, 1f);
                 }
             }
             _highScorePanel.gameObject.SetActive(true);

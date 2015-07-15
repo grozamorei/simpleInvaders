@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Enemy : MonoBehaviour {
@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour {
     [SerializeField] private float _shakeAmount = 0.1f;
     [SerializeField] private float _shakeTime = 0.2f;
     
-    [SerializeField] private int score;
+    [SerializeField] private int score = 0;
 
     private Game _game;   
     private Grid _grid;
@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour {
         if (_currentBurstCount == 0) return;
         
         if (_currentBurstTime <= 0) {
-            _game.audio.playShoot();
+            _game.soundSystem.playShoot();
             var b = Instantiate(bullet);
             b.transform.position = bulletStartPosition.position;
             _currentBurstTime = burstDelay;
@@ -95,7 +95,7 @@ public class Enemy : MonoBehaviour {
     
     void explode()
     {
-        _game.audio.playExplosion();
+        _game.soundSystem.playExplosion();
         _grid.removeEnemy(_x, _y);
         var exp = Instantiate(explosionPrefab);
         exp.transform.position = explosionPoint.position;

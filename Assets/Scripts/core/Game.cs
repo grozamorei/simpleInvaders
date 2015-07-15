@@ -8,12 +8,12 @@ using util;
 public class Game : MonoBehaviour 
 {
     public Rect border = new Rect(1, 3, 10, 5);
-    public Audio audio;
-    [SerializeField] private GameObject grid;
-    [SerializeField] private Transform[] _lifeIndicators;
-    [SerializeField] private Text _scoreLabel;
-    [SerializeField] private Text _startLabel;
-    [SerializeField] private EndScreenMediator _endScreen;
+    public Audio soundSystem;
+    [SerializeField] private GameObject grid = null;
+    [SerializeField] private Transform[] _lifeIndicators = null;
+    [SerializeField] private Text _scoreLabel = null;
+    [SerializeField] private Text _startLabel = null;
+    [SerializeField] private EndScreenMediator _endScreen = null;
     
     private Grid _grid;
     public int currentLifes { get; private set; }

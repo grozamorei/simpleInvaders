@@ -51,7 +51,6 @@ public class Grid : MonoBehaviour
         if (_currentTime >= updateFrequency[_phase]) {
             _currentTime = 0;
             
-            int w = _grid.Count;
             var p = transform.position;
             if (_direction == 1) {
                 if (transform.position.x + xOffset + currentWidth-1 >= _game.border.x + _game.border.width) {

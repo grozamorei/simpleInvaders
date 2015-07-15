@@ -3,9 +3,9 @@ using System.Collections;
 
 public class Audio : MonoBehaviour {
 
-    [SerializeField] private AudioClip finalExplosion;
-    [SerializeField] private AudioClip[] explosions;
-    [SerializeField] private AudioClip[] shots;
+    [SerializeField] private AudioClip finalExplosion = null;
+    [SerializeField] private AudioClip[] explosions = null;
+    [SerializeField] private AudioClip[] shots = null;
     
     private AudioSource[] sources;
     
