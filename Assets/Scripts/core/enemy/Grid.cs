@@ -107,6 +107,9 @@ public class Grid : MonoBehaviour
         }
         
         _enemiesLeft -= 1;
+        if (_enemiesLeft == 0) {
+            _game.end();
+        }
         var ratio = _enemiesLeft / _enemiesTotal;
         
         switch(_phase) {

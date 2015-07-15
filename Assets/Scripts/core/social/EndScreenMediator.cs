@@ -107,24 +107,28 @@ namespace social
                 var score = answer.results[i].score;
                 _highScoreData[i].score.text = Score.formatToStr(score);
 
-//                if (name == _currentName) {
-//                    _highScoreData[i].name.canvasRenderer.SetColor(Color.yellow);
-//                    _highScoreData[i].score.canvasRenderer.SetColor(Color.yellow);
-//                } else {
-//                    _highScoreData[i].name.canvasRenderer.SetColor(Color.white);
-//                    _highScoreData[i].score.canvasRenderer.SetColor(Color.white);
-//                }
+                if (name == _currentName) {
+                    _highScoreData[i].name.color = new Color(0.8f, 0.8f, 0, 1f);
+                    _highScoreData[i].score.color = new Color(0.8f, 0.8f, 0, 1f);
+                } else {
+                    _highScoreData[i].name.color = new Color(0.19f, 0.19f, 0.19f, 1f);
+                    _highScoreData[i].score.color = new Color(0.19f, 0.19f, 0.19f, 1f);
+                }
             }
             _highScorePanel.gameObject.SetActive(true);
             _loading = false;
             _loadingMessage.enabled = false;
             
             if (showPanelsAfter) {
-                var minScore = answer.results[answer.results.Length-1].score;
-                if (_currentScore == minScore && answer.results.Length < 10 || _currentScore > minScore) {
+                if (answer.results.Length == 0) {
                     _sendPanel.gameObject.SetActive(true);
                 } else {
-                    _dontSendMessage.gameObject.SetActive(true);
+                    var minScore = answer.results[answer.results.Length-1].score;
+                    if (_currentScore == minScore && answer.results.Length < 10 || _currentScore > minScore) {
+                        _sendPanel.gameObject.SetActive(true);
+                    } else {
+                        _dontSendMessage.gameObject.SetActive(true);
+                    }
                 }
             }
         }
