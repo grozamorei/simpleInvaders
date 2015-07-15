@@ -1,58 +1,55 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraShake : MonoBehaviour
+namespace util
 {
-    // Transform of the camera to shake. Grabs the gameObject's transform
-    // if null.
-    public Transform camTransform;
-    
-    // How long the object should shake for.
-    public float shake = 0f;
-    
-    // Amplitude of the shake. A larger value shakes the camera harder.
-    public float shakeAmount = 0.7f;
-    public float decreaseFactor = 1.0f;
-    
-    Vector3 originalPos;
-    
-    void Awake()
+    public class CameraShake : MonoBehaviour
     {
-        if (camTransform == null)
+        public Transform camTransform;
+        
+        public float shake = 0f;
+        
+        public float shakeAmount = 0.7f;
+        public float decreaseFactor = 1.0f;
+        
+        Vector3 originalPos;
+        
+        void Awake()
         {
-            camTransform = GetComponent(typeof(Transform)) as Transform;
+            if (camTransform != null) return;
+            camTransform = GetComponent<Transform>();
         }
-    }
-    
-    void OnEnable()
-    {
-        originalPos = camTransform.localPosition;
-    }
-
-    public void play(float amount, float time)
-    {
-        if (shakeAmount > 0) {
-            shakeAmount += amount / 2;
-            shake += time/4;
-        } else {
-            shakeAmount = amount;
-            shake = time;
-        }
-    }
-    
-    void Update()
-    {
-        if (shake > 0)
+        
+        void OnEnable()
         {
-            camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
-            
-            shake -= Time.deltaTime * decreaseFactor;
+            originalPos = camTransform.localPosition;
         }
-        else
+        
+        public void play(float amount, float time)
         {
-            shake = 0f;
-            shakeAmount = 0f;
-            camTransform.localPosition = originalPos;
+            if (shakeAmount > 0) {
+                shakeAmount += amount / 2;
+                shake += time/4;
+            } else {
+                shakeAmount = amount;
+                shake = time;
+            }
+        }
+        
+        void Update()
+        {
+            if (shake > 0)
+            {
+                camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+                
+                shake -= Time.deltaTime * decreaseFactor;
+            }
+            else
+            {
+                shake = 0f;
+                shakeAmount = 0f;
+                camTransform.localPosition = originalPos;
+            }
         }
     }
 }
