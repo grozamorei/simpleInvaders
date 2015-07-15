@@ -149,9 +149,6 @@ public class Player : MonoBehaviour {
         
         _game.subtractLife();
         if (_game.currentLifes == 0) {
-            _game.soundSystem.playFinalExplosion();
-            _game.blur.play(graphics.BlurType.FINAL);
-            Destroy(gameObject);
             return;
         } else {
             _flicker = true;
@@ -162,6 +159,13 @@ public class Player : MonoBehaviour {
         
         _game.soundSystem.playExplosion();
         _game.shake.play(_shakeAmount, _shakeTime);
+    }
+
+    public void end()
+    {
+        _game.soundSystem.playFinalExplosion();
+        _game.blur.play(graphics.BlurType.FINAL);
+        Destroy(gameObject);
     }
     
     void OnDrawGizmos()

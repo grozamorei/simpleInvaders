@@ -67,6 +67,13 @@ public class Grid : MonoBehaviour
                     transform.position = new Vector3(p.x - updateStep[_phase], p.y, p.z);
                 }
             }
+
+            if (transform.position.y < _game.border.y) {
+                while(_game.currentLifes > 0) {
+                    _game.subtractLife();
+                }
+                _game.end();
+            }
         }
         
         for (int i = 0; i < _grid.Count; i++) {

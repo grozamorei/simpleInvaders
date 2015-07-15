@@ -41,7 +41,6 @@ namespace social
         
         public void init(bool win, int score, string strScore)
         {
-            Debug.Log(score);
             _currentScore = score;
             gameObject.SetActive(true);
             

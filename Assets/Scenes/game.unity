@@ -485,7 +485,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shader: {fileID: 4800000, guid: 6f9db614731ac744eaadd1e8b8b1f860, type: 3}
   amount: 0
-  _color: {r: 1, g: 1, b: 1, a: 1}
   _soft:
     serializedVersion: 2
     m_Curve:
@@ -517,7 +516,7 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-  _hardTime: .600000024
+  _hardTime: .5
   _final:
     serializedVersion: 2
     m_Curve:
@@ -526,14 +525,14 @@ MonoBehaviour:
       inSlope: .114271954
       outSlope: .114271954
       tangentMode: 0
-    - time: 1
-      value: -9.91829438e-07
-      inSlope: -4.35276985
-      outSlope: -4.35276985
+    - time: 1.0008502
+      value: 10.0035715
+      inSlope: -.145833537
+      outSlope: -.145833537
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-  _finalTime: 1
+  _finalTime: 2
 --- !u!114 &1361627782 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11411792, guid: b090aa68f1327394a98eee1c16a7525b,

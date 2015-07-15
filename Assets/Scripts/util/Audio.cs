@@ -27,6 +27,9 @@ public class Audio : MonoBehaviour {
     
     public void playFinalExplosion()
     {
+        foreach (var s in sources) {
+            s.Stop();
+        }
         _playOnFreeSource(finalExplosion);
     }
     

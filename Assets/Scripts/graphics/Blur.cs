@@ -10,7 +10,6 @@ namespace graphics
     public class Blur : PostProcessBase {
 
         [SerializeField] private float amount = 0;
-        [SerializeField] private Color _color = Color.white;
         [SerializeField] private AnimationCurve _soft = null;
         [SerializeField] private float _softTime = 0.3f;
         [SerializeField] private AnimationCurve _hard = null;
@@ -25,7 +24,7 @@ namespace graphics
 
         public void play(BlurType t)
         {
-            if (_playing) return;
+            if (_playing && t != BlurType.FINAL) return;
 
             if (t == BlurType.SOFT) {
                 _currentMaxTime = _softTime;

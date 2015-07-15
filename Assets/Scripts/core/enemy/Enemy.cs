@@ -87,7 +87,6 @@ public class Enemy : MonoBehaviour {
     
     void explode()
     {
-
         _game.soundSystem.playExplosion();
         _grid.removeEnemy(_x, _y);
         var exp = Instantiate(explosionPrefab);

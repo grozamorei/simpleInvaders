@@ -22,18 +22,21 @@ public class Game : MonoBehaviour
     public Blur blur {get; private set;}
 
     public CameraShake shake {get; private set;}
+    public Player player {get; private set;}
     
     public bool started { get; private set; }
     private float _currentTime = 0;
     private int _flickerTime = 0;
     
     private int _score = 0;
+    private bool _ended = false;
     
     void Awake()
     {
         started = false;
         blur = Camera.main.GetComponent<Blur>();
         shake = Camera.main.GetComponent<CameraShake>();
+        player = FindObjectOfType<Player>();
     }
     
     void Update()
@@ -72,14 +75,17 @@ public class Game : MonoBehaviour
             }
         }
         
-        if (currentLifes == 0) {
+        if (currentLifes <= 0) {
             end();
         }
     }
     
     public void end()
     {
+        if (_ended) return;
+        _ended = true;
         _grid.end();
+        player.end();
         StartCoroutine(showEndScreen());
     }
     
