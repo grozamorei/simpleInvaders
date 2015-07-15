@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using graphics;
 
 public class Enemy : MonoBehaviour {
     
@@ -26,12 +27,9 @@ public class Enemy : MonoBehaviour {
     private int _currentBurstCount;
     private float _currentBurstTime = -1f;
     
-    private CameraShake _shake;
-    
     public void Init(Game game, Grid grid, int x, int y)
     {
         _game = game;
-        _shake = Camera.main.GetComponent<CameraShake>();
         
         _x = x; _y = y;
         _grid = grid;
@@ -74,14 +72,6 @@ public class Enemy : MonoBehaviour {
     
     void OnCollisionEnter2D (Collision2D col)
     {
-        if (_shake.shakeAmount > 0) {
-            _shake.shakeAmount += _shakeAmount / 2;
-            _shake.shake += _shakeTime/2;
-        } else {
-            _shake.shakeAmount += _shakeAmount;
-            _shake.shake += _shakeTime;
-        }
-        
         if (col.collider.GetComponent<Shield>() != null) {
             transform.localPosition = new Vector3(_x, -_y, 0);
             return;
@@ -90,11 +80,14 @@ public class Enemy : MonoBehaviour {
         if (_y < 2 && _grid.isEnemyAlive(_x, _y+1)) return;
         
         _game.addScore(score);
+        _game.shake.play(_shakeAmount, _shakeTime);
+        _game.blur.play(BlurType.SOFT);
         explode();
     }
     
     void explode()
     {
+
         _game.soundSystem.playExplosion();
         _grid.removeEnemy(_x, _y);
         var exp = Instantiate(explosionPrefab);

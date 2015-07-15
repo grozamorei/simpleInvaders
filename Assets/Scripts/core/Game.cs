@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using social;
 using util;
+using graphics;
 
 
 public class Game : MonoBehaviour 
@@ -17,6 +18,10 @@ public class Game : MonoBehaviour
     
     private Grid _grid;
     public int currentLifes { get; private set; }
+
+    public Blur blur {get; private set;}
+
+    public CameraShake shake {get; private set;}
     
     public bool started { get; private set; }
     private float _currentTime = 0;
@@ -27,6 +32,8 @@ public class Game : MonoBehaviour
     void Awake()
     {
         started = false;
+        blur = Camera.main.GetComponent<Blur>();
+        shake = Camera.main.GetComponent<CameraShake>();
     }
     
     void Update()
@@ -50,7 +57,7 @@ public class Game : MonoBehaviour
         }
         _currentTime += Time.deltaTime;
     }
-    
+
     
     public void subtractLife()
     {

@@ -137,7 +137,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 148544, guid: ed13aa2fe1ff4754ab941c5855aceb5e, type: 2}
   explosionPoint: {fileID: 464062}
   _shakeAmount: .0299999993
-  _shakeTime: .100000001
+  _shakeTime: .300000012
   score: 10
 --- !u!114 &11491462
 MonoBehaviour:
@@ -223,7 +223,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _shakeTime
-      value: .100000001
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: score

@@ -18,14 +18,11 @@ public class Shield : MonoBehaviour
     private IntVec2 textureSize;
     private IntVec2 maskSize;
     
-    private CameraShake _shake;
-    
     private Game _game;
 
     void Awake()
     {
         _game = FindObjectOfType<Game>();
-        _shake = Camera.main.GetComponent<CameraShake>();
         
         _sprite = GetComponent<SpriteRenderer>().sprite;
         _texture = Instantiate(_sprite.texture) as Texture2D;
@@ -40,14 +37,6 @@ public class Shield : MonoBehaviour
 
     void OnCollisionEnter2D (Collision2D col)
     {
-        if (_shake.shakeAmount > 0) {
-            _shake.shakeAmount += _shakeAmount / 2;
-            _shake.shake += _shakeTime/2;
-        } else {
-            _shake.shakeAmount += _shakeAmount;
-            _shake.shake += _shakeTime;
-        }
-
         Vector2 midPoint = new Vector2();
         int collisionsNum = col.contacts.Length;
         for (int i = 0; i < collisionsNum; i++) {
@@ -123,6 +112,8 @@ public class Shield : MonoBehaviour
         ps.Play();
         
         _game.soundSystem.playExplosion();
+        _game.shake.play(_shakeAmount, _shakeTime);
+        _game.blur.play(graphics.BlurType.SOFT);
     }
 
     void OnDrawGizmos()

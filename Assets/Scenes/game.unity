@@ -266,62 +266,14 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 22371762, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1292528442}
     - target: {fileID: 158624, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 11419422, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11419422, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11419422, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 189836, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11402808, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11402808, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11402808, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11411792, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11411792, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11411792, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 199790, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11419422, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 22371762, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1292528442}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
   m_IsPrefabParent: 0
@@ -431,6 +383,7 @@ GameObject:
   - 124: {fileID: 1292528440}
   - 81: {fileID: 1292528439}
   - 114: {fileID: 1292528444}
+  - 114: {fileID: 1292528445}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -519,6 +472,68 @@ MonoBehaviour:
   shake: 0
   shakeAmount: .699999988
   decreaseFactor: 1
+--- !u!114 &1292528445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1292528438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39cd78c8278c6614bada19ffd6ef2d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shader: {fileID: 4800000, guid: 6f9db614731ac744eaadd1e8b8b1f860, type: 3}
+  amount: 0
+  _color: {r: 1, g: 1, b: 1, a: 1}
+  _soft:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 2.94886995e-05
+      inSlope: -.00917628873
+      outSlope: -.00917628873
+      tangentMode: 0
+    - time: 1
+      value: 2.94886995e-05
+      inSlope: -.0760397017
+      outSlope: -.0760397017
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  _softTime: .300000012
+  _hard:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: -3.76366079e-05
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .999871552
+      value: 3.63625586e-05
+      inSlope: -.163133904
+      outSlope: -.163133904
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  _hardTime: .600000024
+  _final:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: .114271954
+      outSlope: .114271954
+      tangentMode: 0
+    - time: 1
+      value: -9.91829438e-07
+      inSlope: -4.35276985
+      outSlope: -4.35276985
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  _finalTime: 1
 --- !u!114 &1361627782 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11411792, guid: b090aa68f1327394a98eee1c16a7525b,
@@ -1102,7 +1117,7 @@ MonoBehaviour:
     y: 4
     width: 14
     height: 6
-  audio: {fileID: 1391066945}
+  soundSystem: {fileID: 1391066945}
   grid: {fileID: 110830, guid: 5d7afd551a6ebe24bbb5a7e339354970, type: 2}
   _lifeIndicators:
   - {fileID: 1925656797}

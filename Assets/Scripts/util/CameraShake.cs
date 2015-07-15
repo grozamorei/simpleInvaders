@@ -28,6 +28,17 @@ public class CameraShake : MonoBehaviour
     {
         originalPos = camTransform.localPosition;
     }
+
+    public void play(float amount, float time)
+    {
+        if (shakeAmount > 0) {
+            shakeAmount += amount / 2;
+            shake += time/4;
+        } else {
+            shakeAmount = amount;
+            shake = time;
+        }
+    }
     
     void Update()
     {

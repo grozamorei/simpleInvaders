@@ -36,12 +36,8 @@ public class Player : MonoBehaviour {
     private Material _material;
     private PolygonCollider2D _collider;
     
-    private CameraShake _shake;
-    
     void Awake()
     {
-        _shake = Camera.main.GetComponent<CameraShake>();
-
         leftP.emissionRate = baseEmission;
         rightP.emissionRate = baseEmission;
         
@@ -129,14 +125,6 @@ public class Player : MonoBehaviour {
     
     void OnCollisionEnter2D (Collision2D col)
     {
-        if (_shake.shakeAmount > 0) {
-            _shake.shakeAmount += _shakeAmount / 2;
-            _shake.shake += _shakeTime/2;
-        } else {
-            _shake.shakeAmount += _shakeAmount;
-            _shake.shake += _shakeTime;
-        }
-        
         if (col.collider.GetComponent<Enemy>() != null) {
             while(_game.currentLifes >= 0) {
                 Debug.Log(_game.currentLifes);
@@ -162,15 +150,18 @@ public class Player : MonoBehaviour {
         _game.subtractLife();
         if (_game.currentLifes == 0) {
             _game.soundSystem.playFinalExplosion();
+            _game.blur.play(graphics.BlurType.FINAL);
             Destroy(gameObject);
             return;
         } else {
             _flicker = true;
             _currentFlickerTime = 0;
             _collider.enabled = false;
+            _game.blur.play(graphics.BlurType.HARD);
         }
         
         _game.soundSystem.playExplosion();
+        _game.shake.play(_shakeAmount, _shakeTime);
     }
     
     void OnDrawGizmos()

@@ -6,7 +6,7 @@ namespace graphics
     [ExecuteInEditMode]
     public class PostProcessBase : MonoBehaviour
     {
-        [SerializeField] private Shader _shader = Shader.Find("Custom/GrayScale");
+        [SerializeField] private Shader _shader = null;
     
         private Material _mat;
         protected Material material
