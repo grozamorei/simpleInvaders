@@ -274,9 +274,53 @@ Prefab:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 11419422, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419422, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419422, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 189836, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11402808, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11402808, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11402808, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11411792, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11411792, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11411792, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 199790, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419422, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
@@ -1184,7 +1228,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 410184, guid: c9c66f3718caadb4987cf1a1139a415f, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11451432, guid: c9c66f3718caadb4987cf1a1139a415f, type: 2}
       propertyPath: _game

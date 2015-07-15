@@ -1,6 +1,8 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
 using System.Collections;
+using social;
+using util;
 
 public class Game : MonoBehaviour 
 {
@@ -23,8 +25,7 @@ public class Game : MonoBehaviour
     
     void Awake()
     {
-//        started = false;
-        end ();
+        started = false;
     }
     
     void Update()
@@ -70,29 +71,20 @@ public class Game : MonoBehaviour
     
     public void end()
     {
-//        _grid.end();
+        _grid.end();
         StartCoroutine(showEndScreen());
     }
     
     public void addScore(int score) 
     {
         _score = Mathf.Max(0, _score + score);
-        
-        if (_score == 0) {
-            _scoreLabel.text = "0000";
-        } else if (_score < 100) {
-            _scoreLabel.text = "00" + _score.ToString();
-        } else if (_score < 1000) {
-            _scoreLabel.text = "0" + _score.ToString();
-        } else {
-            _scoreLabel.text = _score.ToString();
-        }
+        _scoreLabel.text = Score.formatToStr(_score);
     }
     
     IEnumerator showEndScreen()
     {
         yield return new WaitForSeconds(2);
-        _endScreen.init(currentLifes > 0, _scoreLabel.text);
+        _endScreen.init(currentLifes > 0, 300, _scoreLabel.text);
     }
     
     void OnDrawGizmos()
