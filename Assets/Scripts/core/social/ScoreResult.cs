@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace social
 {
     public class ScoreResultCollection 
     {
-        public ScoreResult[] results;
+        public List<ScoreResult> results;
     }
     
     public class ScoreResult 

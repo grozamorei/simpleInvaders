@@ -411,7 +411,7 @@ Transform:
   - {fileID: 1937539580}
   - {fileID: 779737785}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &1023939311 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11419422, guid: b090aa68f1327394a98eee1c16a7525b,

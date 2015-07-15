@@ -2,8 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 using util;
+using LitJson;
 
 namespace social
 {
@@ -24,7 +24,6 @@ namespace social
 
         private Dictionary<string, string> _getHeader;
         private Dictionary<string, string> _postHeader;
-        private Dictionary<string, string> _putHeader;
 
         private bool _loading = false;
         private int _currentScore;
@@ -35,15 +34,15 @@ namespace social
         {
             _getHeader = new Dictionary<string, string>();
             _postHeader = new Dictionary<string, string>();
-            _putHeader = new Dictionary<string, string>();
-            _getHeader["Methods"] = "GET"; _postHeader["Methods"] = "POST"; _putHeader["Methods"] = "PUT";
-            _getHeader["X-Parse-Application-Id"] = _postHeader["X-Parse-Application-Id"] = _putHeader["X-Parse-Application-Id"] = "VXuJqglLjoe90rmppH3y5e2tYkO1wlekOGg0UWkG";
-            _getHeader["X-Parse-REST-API-Key"] = _postHeader["X-Parse-REST-API-Key"] = _putHeader["X-Parse-REST-API-Key"] = "r137sN6SYtRxrsyDZXZkWEOKiQnIJFrU83gHLbSr";
-            _getHeader["Content-Type"] = _postHeader["Content-Type"] = _putHeader["Content-Type"] = "application/json";
+            _getHeader["Methods"] = "GET"; _postHeader["Methods"] = "POST";
+            _getHeader["X-Parse-Application-Id"] = _postHeader["X-Parse-Application-Id"] = "VXuJqglLjoe90rmppH3y5e2tYkO1wlekOGg0UWkG";
+            _getHeader["X-Parse-REST-API-Key"] = _postHeader["X-Parse-REST-API-Key"] = "r137sN6SYtRxrsyDZXZkWEOKiQnIJFrU83gHLbSr";
+            _getHeader["Content-Type"] = _postHeader["Content-Type"] = "application/json";
         }
         
         public void init(bool win, int score, string strScore)
         {
+            Debug.Log(score);
             _currentScore = score;
             gameObject.SetActive(true);
             
@@ -73,9 +72,11 @@ namespace social
                 _inputStatus.text = "at least 3 characters length";
                 return;
             }
+
             _currentName = _nameInput.text;
             _sendPanel.gameObject.SetActive(false);
             _loading = true;
+
             StartCoroutine(pushResults());
         }
 
@@ -91,23 +92,20 @@ namespace social
         IEnumerator loadHighScoreTable(bool showPanelsAfter)
         {
             _loading = true;
-            //            var encoding = new System.Text.UTF8Encoding();
-            //        var dd = encoding.GetBytes(JsonConvert.SerializeObject(new {order="score", score=1}));
-            //        "'name':'some', 'score':500"
             var w = new WWW("https://api.parse.com/1/classes/Score?order=-score&limit=10", null, _getHeader);
             yield return w;
-            
-            var answer = JsonConvert.DeserializeObject<ScoreResultCollection>(w.text) as ScoreResultCollection;
+
+            var answer = JsonMapper.ToObject<ScoreResultCollection>(w.text);
             _currentResults = answer;
             
-            for (int i = 0; i < answer.results.Length; i++) {
+            for (int i = 0; i < answer.results.Count; i++) {
                 var name = answer.results[i].name;
                 _highScoreData[i].name.text = name;
                 
                 var score = answer.results[i].score;
                 _highScoreData[i].score.text = Score.formatToStr(score);
 
-                if (name == _currentName) {
+                if (name == _currentName && score == _currentScore) {
                     _highScoreData[i].name.color = new Color(0.8f, 0.8f, 0, 1f);
                     _highScoreData[i].score.color = new Color(0.8f, 0.8f, 0, 1f);
                 } else {
@@ -120,11 +118,11 @@ namespace social
             _loadingMessage.enabled = false;
             
             if (showPanelsAfter) {
-                if (answer.results.Length == 0) {
+                if (answer.results.Count == 0) {
                     _sendPanel.gameObject.SetActive(true);
                 } else {
-                    var minScore = answer.results[answer.results.Length-1].score;
-                    if (_currentScore == minScore && answer.results.Length < 10 || _currentScore > minScore) {
+                    var minScore = answer.results[answer.results.Count-1].score;
+                    if ((_currentScore > 0) && ((_currentScore <= minScore && answer.results.Count < 10) || _currentScore > minScore)) {
                         _sendPanel.gameObject.SetActive(true);
                     } else {
                         _dontSendMessage.gameObject.SetActive(true);
@@ -135,24 +133,10 @@ namespace social
 
         IEnumerator pushResults()
         {
-            string objId = null;
-            foreach (var a in _currentResults.results) {
-                if (a.name == _currentName) {
-                    objId = a.objectId;
-                    break;
-                }
-            }
-
             var enc = new System.Text.UTF8Encoding();
-            if (string.IsNullOrEmpty(objId)) {
-                var data = enc.GetBytes(JsonConvert.SerializeObject(new {name=_currentName, score=_currentScore}));
-                var w = new WWW("https://api.parse.com/1/classes/Score", data, _postHeader);
-                yield return w;
-            } else {
-                var data = enc.GetBytes(JsonConvert.SerializeObject(new {score=_currentScore}));
-                var w = new WWW("https://api.parse.com/1/classes/Score/" + objId, data, _putHeader);
-                yield return w;
-            }
+            var data = enc.GetBytes(JsonMapper.ToJson(new {name=_currentName, score=_currentScore}));
+            var w = new WWW("https://api.parse.com/1/classes/Score", data, _postHeader);
+            yield return w;
             StartCoroutine(loadHighScoreTable(false));
         }
     }

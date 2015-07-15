@@ -213,7 +213,9 @@ MonoBehaviour:
   rightBound: 15
   flickerTime: 2
   flickerSpeed: 10
-  fireCooldown: .600000024
+  fireCooldown: .579999983
+  _shakeAmount: .100000001
+  _shakeTime: .200000003
 --- !u!114 &11495972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3529,7 +3531,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: fireCooldown
-      value: .600000024
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

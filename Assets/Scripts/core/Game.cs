@@ -4,6 +4,7 @@ using System.Collections;
 using social;
 using util;
 
+
 public class Game : MonoBehaviour 
 {
     public Rect border = new Rect(1, 3, 10, 5);
@@ -84,7 +85,7 @@ public class Game : MonoBehaviour
     IEnumerator showEndScreen()
     {
         yield return new WaitForSeconds(2);
-        _endScreen.init(currentLifes > 0, 300, _scoreLabel.text);
+        _endScreen.init(currentLifes > 0, _score, _scoreLabel.text);
     }
     
     void OnDrawGizmos()
