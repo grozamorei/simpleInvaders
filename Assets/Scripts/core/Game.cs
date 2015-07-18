@@ -14,6 +14,7 @@ public class Game : MonoBehaviour
     [SerializeField] private Text _scoreLabel = null;
     [SerializeField] private Text _startLabel = null;
     [SerializeField] private EndScreenMediator _endScreen = null;
+    [SerializeField] private Transform _controlPanel = null;
     
     private Grid _grid;
     public int currentLifes { get; private set; }
@@ -45,6 +46,7 @@ public class Game : MonoBehaviour
             _flickerTime += 1;
             if (_flickerTime > 6) {
                 started = true;
+                _controlPanel.gameObject.SetActive(true);
                 _startLabel.enabled = false;
                 
                 currentLifes = _lifeIndicators.Length;
@@ -79,6 +81,7 @@ public class Game : MonoBehaviour
     public void end()
     {
         if (_ended) return;
+        _controlPanel.gameObject.SetActive(false);
         _ended = true;
         _grid.end();
         player.end();

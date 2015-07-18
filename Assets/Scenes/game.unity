@@ -2134,6 +2134,7 @@ MonoBehaviour:
   _scoreLabel: {fileID: 1361627782}
   _startLabel: {fileID: 1023939311}
   _endScreen: {fileID: 376934736}
+  _controlPanel: {fileID: 2083186496}
 --- !u!4 &1638279814
 Transform:
   m_ObjectHideFlags: 0
@@ -2361,6 +2362,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9c66f3718caadb4987cf1a1139a415f, type: 2}
   m_IsPrefabParent: 0
+--- !u!224 &2083186496 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 22407252, guid: b090aa68f1327394a98eee1c16a7525b,
+    type: 2}
+  m_PrefabInternal: {fileID: 376934735}
 --- !u!1 &2086385920
 GameObject:
   m_ObjectHideFlags: 0
