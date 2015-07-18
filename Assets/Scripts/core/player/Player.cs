@@ -11,8 +11,8 @@ public class Player : MonoBehaviour {
     
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private Game _game = null;
-    [SerializeField] private int leftBound = 1;
-    [SerializeField] private int rightBound = 10;
+    [SerializeField] public float leftBound = 1;
+    [SerializeField] public float rightBound = 10;
     
     [SerializeField] private int flickerTime = 2;
     [SerializeField] private int flickerSpeed = 1;

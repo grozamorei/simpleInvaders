@@ -4,7 +4,7 @@ using System.Collections;
 using social;
 using util;
 
-
+[ExecuteInEditMode]
 public class Game : MonoBehaviour 
 {
     public Rect border = new Rect(1, 3, 10, 5);
@@ -31,6 +31,7 @@ public class Game : MonoBehaviour
     
     void Awake()
     {
+        if (!Application.isPlaying) return;
         started = false;
         shake = Camera.main.GetComponent<CameraShake>();
         player = FindObjectOfType<Player>();
@@ -38,6 +39,21 @@ public class Game : MonoBehaviour
     
     void Update()
     {
+        if (!Application.isPlaying) {
+            var c = Camera.main;
+            if (c == null) return;
+            
+            var halfWidth = c.orthographicSize  * c.aspect;
+            var minX = Mathf.Ceil(c.transform.position.x - halfWidth);
+            var maxX = Mathf.Floor(c.transform.position.x + halfWidth);
+            
+            border = new Rect(minX, 3, maxX - minX, 7);
+            var p = FindObjectOfType<Player>();
+            p.leftBound = minX;
+            p.rightBound = maxX;
+        }
+        
+        if (!Application.isPlaying) return;
         if (started) return;
 
         if (_currentTime >= 0.5f) {

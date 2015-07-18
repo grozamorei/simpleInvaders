@@ -113,8 +113,8 @@ MonoBehaviour:
   fasterEmission: 60
   moveSpeed: 4
   _game: {fileID: 0}
-  leftBound: 1
-  rightBound: 15
+  leftBound: -1
+  rightBound: 17
   flickerTime: 2
   flickerSpeed: 10
   fireCooldown: .579999983
