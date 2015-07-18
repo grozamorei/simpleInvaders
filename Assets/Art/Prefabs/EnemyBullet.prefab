@@ -73,10 +73,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   colorLerpSpeed: 4
-  color1: {r: .755862176, g: .800000012, b: 0, a: .800000012}
-  color2: {r: .240862876, g: .992647052, b: .774888873, a: .800000012}
-  color3: {r: 1, g: .117647052, b: .117647052, a: .800000012}
-  color4: {r: .553448141, g: 1, b: .125, a: .800000012}
+  color1: {r: .755862176, g: .800000012, b: 0, a: 1}
+  color2: {r: .240862876, g: .992647052, b: .774888873, a: 1}
+  color3: {r: 1, g: .117647052, b: .117647052, a: 1}
+  color4: {r: .553448141, g: 1, b: .125, a: 1}
 --- !u!212 &21281382
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -102,7 +102,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 5cbb1979e1a1fd84b8129e8c45403d19, type: 3}
-  m_Color: {r: .985294104, g: .181120232, b: .197758183, a: .588235319}
+  m_Color: {r: 1, g: .602941155, b: .611156106, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -113,6 +113,38 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.g
+      value: .602941155
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.b
+      value: .611156106
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color2.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color3.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color4.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
