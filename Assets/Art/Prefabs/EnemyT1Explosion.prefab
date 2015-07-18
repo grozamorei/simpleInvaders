@@ -203,7 +203,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 3368404421
+        rgba: 4282006204
       minMaxState: 0
     startSize:
       scalar: .119999997
@@ -292,7 +292,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 1000
+      scalar: 300
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -958,12 +958,12 @@ ParticleSystem:
       minMaxState: 0
     range: {x: 0, y: 1}
   ColorBySpeedModule:
-    enabled: 0
+    enabled: 1
     gradient:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 4281940438
         key1:
           serializedVersion: 2
           rgba: 4294967295
@@ -1127,11 +1127,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: EmissionModule.rate.scalar
-      value: 1000
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startColor.maxColor.rgba
-      value: 3368404421
+      value: 4282006204
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: playOnAwake
@@ -1148,6 +1148,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ColorBySpeedModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ColorBySpeedModule.gradient.maxGradient.ctime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ColorBySpeedModule.gradient.maxGradient.key0.rgba
+      value: 4281940438
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
