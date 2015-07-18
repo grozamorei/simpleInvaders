@@ -44,6 +44,26 @@ public class Player : MonoBehaviour {
         _collider = GetComponent<PolygonCollider2D>();
     }
     
+    public void onLeftDown()
+    {
+        _leftDown = true;
+    }
+    
+    public void onLeftUp()
+    {
+        _leftDown = false;
+    }
+    
+    public void onRightDown()
+    {
+        _rightDown = true;
+    }
+    
+    public void onRightUp()
+    {
+        _rightDown = false;
+    }
+    
     void Update()
     {
         if (!_game.started) return;
@@ -119,6 +139,16 @@ public class Player : MonoBehaviour {
             }
             _material.SetColor("_Color", c);
         }
+    }
+    
+    public void onShootUI()
+    {
+        if (_currentFireCooldown <= 0) {
+            _game.soundSystem.playShoot();
+            _currentFireCooldown = fireCooldown;
+            var b = Instantiate(bulletPrefab);
+            b.transform.position = bulletStartPosition.position;
+        } 
     }
     
     void OnCollisionEnter2D (Collision2D col)
