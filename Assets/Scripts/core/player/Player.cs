@@ -66,6 +66,11 @@ public class Player : MonoBehaviour {
     
     void Update()
     {
+		if (Input.GetKey(KeyCode.Escape)) 
+		{
+			Application.Quit();
+		}
+
         if (!_game.started) return;
 
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
