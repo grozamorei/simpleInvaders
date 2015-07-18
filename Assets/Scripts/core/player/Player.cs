@@ -5,8 +5,6 @@ public class Player : MonoBehaviour {
 
     [SerializeField] private Transform bulletStartPosition = null;
     [SerializeField] private Bullet bulletPrefab = null;
-    [SerializeField] private ParticleSystem leftP = null;
-    [SerializeField] private ParticleSystem rightP = null;
     [SerializeField] private ParticleSystem explosion = null;
     [SerializeField] private float baseEmission = 10;
     [SerializeField] private float fasterEmission = 100;
@@ -38,8 +36,8 @@ public class Player : MonoBehaviour {
     
     void Awake()
     {
-        leftP.emissionRate = baseEmission;
-        rightP.emissionRate = baseEmission;
+//        leftP.emissionRate = baseEmission;
+//        rightP.emissionRate = baseEmission;
         
         _material = GetComponent<SpriteRenderer>().material;
         _defaultAlpha = _material.GetColor("_Color").a;
@@ -51,18 +49,18 @@ public class Player : MonoBehaviour {
         if (!_game.started) return;
 
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-            rightP.emissionRate = fasterEmission;
+//            rightP.emissionRate = fasterEmission;
             _leftDown = true;
         } else if (Input.GetKeyUp(KeyCode.LeftArrow)) {
-            rightP.emissionRate = baseEmission;
+//            rightP.emissionRate = baseEmission;
             _leftDown = false;
         }
         
         if (Input.GetKeyDown(KeyCode.RightArrow)) {
-            leftP.emissionRate = fasterEmission;
+//            leftP.emissionRate = fasterEmission;
             _rightDown = true;
         } else if (Input.GetKeyUp(KeyCode.RightArrow)) {
-            leftP.emissionRate = baseEmission;
+//            leftP.emissionRate = baseEmission;
             _rightDown = false;
         }
         
