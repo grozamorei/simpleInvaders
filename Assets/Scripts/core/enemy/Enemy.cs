@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using graphics;
 
 public class Enemy : MonoBehaviour {
     
@@ -81,7 +80,6 @@ public class Enemy : MonoBehaviour {
         
         _game.addScore(score);
         _game.shake.play(_shakeAmount, _shakeTime);
-        _game.blur.play(BlurType.SOFT);
         explode();
     }
     

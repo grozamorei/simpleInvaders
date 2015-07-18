@@ -113,7 +113,6 @@ public class Shield : MonoBehaviour
         
         _game.soundSystem.playExplosion();
         _game.shake.play(_shakeAmount, _shakeTime);
-        _game.blur.play(graphics.BlurType.SOFT);
     }
 
     void OnDrawGizmos()

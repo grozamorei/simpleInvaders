@@ -572,56 +572,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39cd78c8278c6614bada19ffd6ef2d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shader: {fileID: 4800000, guid: 6f9db614731ac744eaadd1e8b8b1f860, type: 3}
-  amount: 0
-  _soft:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 2.94886995e-05
-      inSlope: -.00917628873
-      outSlope: -.00917628873
-      tangentMode: 0
-    - time: 1
-      value: 2.94886995e-05
-      inSlope: -.0760397017
-      outSlope: -.0760397017
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  _softTime: .300000012
-  _hard:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: -3.76366079e-05
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: .999871552
-      value: 3.63625586e-05
-      inSlope: -.163133904
-      outSlope: -.163133904
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  _hardTime: .5
-  _final:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: .114271954
-      outSlope: .114271954
-      tangentMode: 0
-    - time: 1.0008502
-      value: 10.0035715
-      inSlope: -.145833537
-      outSlope: -.145833537
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  _finalTime: 2
 --- !u!114 &1312730034 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11451432, guid: c9c66f3718caadb4987cf1a1139a415f,

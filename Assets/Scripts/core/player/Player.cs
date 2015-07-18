@@ -182,7 +182,6 @@ public class Player : MonoBehaviour {
             _flicker = true;
             _currentFlickerTime = 0;
             _collider.enabled = false;
-            _game.blur.play(graphics.BlurType.HARD);
         }
         
         _game.soundSystem.playExplosion();
@@ -192,7 +191,6 @@ public class Player : MonoBehaviour {
     public void end()
     {
         _game.soundSystem.playFinalExplosion();
-        _game.blur.play(graphics.BlurType.FINAL);
         Destroy(gameObject);
     }
     
