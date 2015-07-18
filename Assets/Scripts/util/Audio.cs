@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SoundSystem : MonoBehaviour {
+public class Audio : MonoBehaviour {
 
     [SerializeField] private AudioClip finalExplosion = null;
     [SerializeField] private AudioClip[] explosions = null;

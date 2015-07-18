@@ -46,6 +46,12 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D (Collision2D col)
     {
+//        Debug.Log ("bullet: collision: " + col);
         Destroy(gameObject);
+    }
+
+    void OnTriggerEnter2D (Collider2D col)
+    {
+//        Debug.Log ("bullet: trigger collision: " + col);
     }
 }

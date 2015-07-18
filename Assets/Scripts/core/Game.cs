@@ -1,14 +1,15 @@
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 using UnityEngine;
 using System.Collections;
 using social;
 using util;
 using graphics;
 
+
 public class Game : MonoBehaviour 
 {
     public Rect border = new Rect(1, 3, 10, 5);
-    public SoundSystem soundSystem;
+    public Audio soundSystem;
     [SerializeField] private GameObject grid = null;
     [SerializeField] private Transform[] _lifeIndicators = null;
     [SerializeField] private Text _scoreLabel = null;
@@ -16,13 +17,14 @@ public class Game : MonoBehaviour
     [SerializeField] private EndScreenMediator _endScreen = null;
     
     private Grid _grid;
-
     public int currentLifes { get; private set; }
+
     public Blur blur {get; private set;}
+
     public CameraShake shake {get; private set;}
     public Player player {get; private set;}
+    
     public bool started { get; private set; }
-
     private float _currentTime = 0;
     private int _flickerTime = 0;
     
