@@ -40,7 +40,7 @@ public class Grid : MonoBehaviour
 				e.GetComponent<Enemy>().Init(_game, this, i, j);
                 _grid[i].Add(e);
                 e.transform.SetParent(transform);
-                e.transform.localPosition = new Vector3(i, -j * 2f, 0);
+                e.transform.localPosition = new Vector3(i, -j * 1.1f, 0);
             }
         }
     }
