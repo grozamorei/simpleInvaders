@@ -95,7 +95,7 @@ public class Shield : MonoBehaviour
         _texture.Apply();
         GetComponent<SpriteRenderer>().sprite = Sprite.Create(_texture, _sprite.rect, _sprite.pivot);
 
-        Destroy (GetComponent<PolygonCollider2D>());
+        GetComponent<PolygonCollider2D>().enabled = false;
         float alphas = 0;
         var pxls = _texture.GetPixels();
         for (int i = 0; i < pxls.Length; i++) {

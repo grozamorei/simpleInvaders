@@ -266,34 +266,34 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 158624, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Name
-      value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 22371762, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Camera
+    - target: {fileID: 11407850, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1292528442}
+      objectReference: {fileID: 1312730034}
+    - target: {fileID: 11407850, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1312730034}
+    - target: {fileID: 11483990, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1312730034}
+    - target: {fileID: 11483990, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1312730034}
     - target: {fileID: 11462168, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1312730034}
-    - target: {fileID: 11483990, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+    - target: {fileID: 22371762, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 1312730034}
-    - target: {fileID: 11483990, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1312730034}
-    - target: {fileID: 11407850, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1312730034}
-    - target: {fileID: 11407850, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
-      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1312730034}
+      objectReference: {fileID: 1292528442}
+    - target: {fileID: 158624, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b090aa68f1327394a98eee1c16a7525b, type: 2}
   m_IsPrefabParent: 0
@@ -836,9 +836,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b3003e785e386ee48aba8012f685f84e, type: 3}
   shots:
   - {fileID: 8300000, guid: 011ade96994f612468e30a71416d982f, type: 3}
-  - {fileID: 8300000, guid: 6c5e25ef260c19f4bb8c90c3170eca42, type: 3}
-  - {fileID: 8300000, guid: 4e79a218ffaafb540aae62acd23d95c5, type: 3}
   - {fileID: 8300000, guid: ee4c4d709dcf6ee46b41e240a64ca852, type: 3}
+  - {fileID: 8300000, guid: 4e79a218ffaafb540aae62acd23d95c5, type: 3}
 --- !u!82 &1391066946
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1149,9 +1148,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   border:
     serializedVersion: 2
-    x: -1
+    x: -2
     y: 3
-    width: 18
+    width: 20
     height: 7
   soundSystem: {fileID: 1391066945}
   grid: {fileID: 110830, guid: 5d7afd551a6ebe24bbb5a7e339354970, type: 2}
